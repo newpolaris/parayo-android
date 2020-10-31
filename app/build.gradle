@@ -17,7 +17,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            manifestPlaceholders = [hostAddress: "http://10.0.2.2:8080"]
+        }
         release {
+            manifestPlaceholders = [hostAddress: "http://10.0.2.2:8080"]
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -26,6 +30,8 @@ android {
 
 ext {
     anko_version = '0.10.8'
+    retrofit_version = '2.6.0'
+    okhttp_version = '3.8.0'
 }
 
 dependencies {
@@ -38,6 +44,10 @@ dependencies {
     implementation "org.jetbrains.anko:anko-design:$anko_version"
     implementation "org.jetbrains.anko:anko-design-coroutines:$anko_version"
     implementation "org.jetbrains.anko:anko-constraint-layout:$anko_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
